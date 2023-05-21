@@ -25,25 +25,25 @@ app.get('/', (req, res) => {
     res.send('Hellllllll no')
 })
 
-app.post('/signup', UserController.signup)
+// app.post('/signup', UserController.signup)
 
-app.post('/login', UserController.login)
+// app.post('/login', UserController.login)
 
-app.get('/events', EventController.getEvents)
+// app.get('/events', EventController.getEvents)
 
-app.post('/events/add', EventController.addEvent)
+// app.post('/events/add', EventController.addEvent)
 
-app.post('/events/update', EventController.updateEvent)
+// app.post('/events/update', EventController.updateEvent)
 
-app.delete('/events/delete/:id', EventController.deleteEvent)
+// app.delete('/events/delete/:id', EventController.deleteEvent)
 
-app.get('/users/sellers', UserController.getSellers)
+// app.get('/users/sellers', UserController.getSellers)
 
-app.get('/users/buyers', UserController.getBuyers)
+// app.get('/users/buyers', UserController.getBuyers)
 
-app.post('/users/update', UserController.updateStatus)
+// app.post('/users/update', UserController.updateStatus)
 
-app.delete('/users/delete/:username', UserController.deleteUser)
+// app.delete('/users/delete/:username', UserController.deleteUser)
 
 
 app.listen(process.env.PORT || 5000)
