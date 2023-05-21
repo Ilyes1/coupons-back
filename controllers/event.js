@@ -9,16 +9,16 @@ const getEvents = (req, res) => {
 
 const addEvent = (req, res) => {
     const event = new Event({
-        name: 'ed shh',
-        location: 'wembley',
-        event_date: '02/22/2023',
-        on_sale_date: '02/22/2023',
-        code_type: 'unique'
+        name: req.body.name,
+        location: req.body.location,
+        event_date: req.body.event_date,
+        on_sale_date: req.body.on_sale_date,
+        code_type: req.body.code_type
     })
     
     event.save()
     .then(() => console.log('saved'))
-    .catch((err) => console.log('saved'))
+    .catch((err) => console.log(err))
 }
 
 const updateEvent = (req, res) => {
@@ -33,4 +33,10 @@ const updateEvent = (req, res) => {
     .catch(err => console.log(err))
 }
 
-module.exports = { getEvents, addEvent, updateEvent }
+const deleteEvent = (req, res) => {
+    Event.deleteOne({_id: req.params.id})
+    .then(() => console.log('deleted'))
+    .catch((err) => console.log(err))
+}
+
+module.exports = { getEvents, addEvent, updateEvent, deleteEvent }
