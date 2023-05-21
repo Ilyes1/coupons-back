@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const EventController = require('./controllers/event');
-const UserController = require('./controllers/user');
+const UserController = require('./controllers/User');
 const cors = require('cors')
 
 const app = express()
