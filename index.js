@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const EventController = require('./controllers/Event');
-const UserController = require('./controllers/User');
+const EventController = require('./controllers/event');
+// const UserController = require('./controllers/user');
 const cors = require('cors')
 
 const app = express()
@@ -37,13 +37,13 @@ app.post('/events/update', EventController.updateEvent)
 
 app.delete('/events/delete/:id', EventController.deleteEvent)
 
-app.get('/users/sellers', UserController.getSellers)
+// app.get('/users/sellers', UserController.getSellers)
 
-app.get('/users/buyers', UserController.getBuyers)
+// app.get('/users/buyers', UserController.getBuyers)
 
-app.post('/users/update', UserController.updateStatus)
+// app.post('/users/update', UserController.updateStatus)
 
-app.delete('/users/delete/:username', UserController.deleteUser)
+// app.delete('/users/delete/:username', UserController.deleteUser)
 
 
 app.listen(process.env.PORT || 5000)

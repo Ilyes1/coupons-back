@@ -54,29 +54,29 @@ const login = (req, res) => {
 }
 
 
-const getSellers = (req, res) => {
-    User.find({type: ['SELLER', 'BUYER_SELLER']})
-    .then((sellers) => res.json(sellers))
-    .catch((err) => console.log(err))
-}
+// const getSellers = (req, res) => {
+//     User.find({type: ['SELLER', 'BUYER_SELLER']})
+//     .then((sellers) => res.json(sellers))
+//     .catch((err) => console.log(err))
+// }
 
-const getBuyers = (req, res) => {
-    User.find({type: ['BUYER', 'BUYER_BUYER']})
-    .then((buyers) => res.json(buyers))
-    .catch((err) => console.log(err))
-}
+// const getBuyers = (req, res) => {
+//     User.find({type: ['BUYER', 'BUYER_BUYER']})
+//     .then((buyers) => res.json(buyers))
+//     .catch((err) => console.log(err))
+// }
 
-const updateStatus = (req, res) => {
-    User.updateOne({username: req.body.username}, {status: req.body.status})
-    .then(() => console.log('updated'))
-    .catch((err) => console.log(err))
-}
+// const updateStatus = (req, res) => {
+//     User.updateOne({username: req.body.username}, {status: req.body.status})
+//     .then(() => console.log('updated'))
+//     .catch((err) => console.log(err))
+// }
 
-const deleteUser = (req, res) => {
-    User.deleteOne({username: req.params.username})
-    .then(() => console.log('deleted'))
-    .catch((err) => console.log(err))
-}
+// const deleteUser = (req, res) => {
+//     User.deleteOne({username: req.params.username})
+//     .then(() => console.log('deleted'))
+//     .catch((err) => console.log(err))
+// }
 
 
-module.exports = { getSellers, getBuyers, updateStatus, deleteUser, signup, login }
+module.exports = {  signup, login }
