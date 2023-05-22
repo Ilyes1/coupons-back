@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
     res.send('Hellllllll no')
 })
 
-app.post('/signup', EventUser.signup)
+// app.post('/signup', EventUser.signup)
 
-app.post('/login', EventUser.login)
+// app.post('/login', EventUser.login)
 
 app.get('/events', EventUser.getEvents)
 
@@ -38,13 +38,13 @@ app.post('/events/update', EventUser.updateEvent)
 
 app.delete('/events/delete/:id', EventUser.deleteEvent)
 
-app.get('/users/sellers', EventUser.getSellers)
+// app.get('/users/sellers', EventUser.getSellers)
 
-app.get('/users/buyers', EventUser.getBuyers)
+// app.get('/users/buyers', EventUser.getBuyers)
 
-app.post('/users/update', EventUser.updateStatus)
+// app.post('/users/update', EventUser.updateStatus)
 
-app.delete('/users/delete/:username', EventUser.deleteUser)
+// app.delete('/users/delete/:username', EventUser.deleteUser)
 
 
 app.listen(process.env.PORT || 5000)
