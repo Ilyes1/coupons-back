@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-// const EventController = require('./controllers/eventController');
-const UserController = require('./controllers/userController');
+const EventUser = require('./controllers/eventUser');
+// const UserController = require('./controllers/userController');
 // const userRoutes = require('./routes/user');
 const cors = require('cors')
 
@@ -26,25 +26,25 @@ app.get('/', (req, res) => {
     res.send('Hellllllll no')
 })
 
-app.post('/signup', UserController.signup)
+app.post('/signup', EventUser.signup)
 
-app.post('/login', UserController.login)
+app.post('/login', EventUser.login)
 
-// app.get('/events', EventController.getEvents)
+app.get('/events', EventUser.getEvents)
 
-// app.post('/events/add', EventController.addEvent)
+app.post('/events/add', EventUser.addEvent)
 
-// app.post('/events/update', EventController.updateEvent)
+app.post('/events/update', EventUser.updateEvent)
 
-// app.delete('/events/delete/:id', EventController.deleteEvent)
+app.delete('/events/delete/:id', EventUser.deleteEvent)
 
 app.get('/users/sellers', getSellers)
 
-app.get('/users/buyers', UserController.getBuyers)
+app.get('/users/buyers', EventUser.getBuyers)
 
-app.post('/users/update', UserController.updateStatus)
+app.post('/users/update', EventUser.updateStatus)
 
-app.delete('/users/delete/:username', UserController.deleteUser)
+app.delete('/users/delete/:username', EventUser.deleteUser)
 
 
 app.listen(process.env.PORT || 5000)
