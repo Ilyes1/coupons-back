@@ -1,6 +1,6 @@
 const Event = require('../models/eventSchema')
 const User = require('../models/userSchema')
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 
 const getEvents = (req, res) => {
       Event.find()
