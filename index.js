@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const EventController = require('./controllers/eventController');
-const UserController = require('./functions/userController');
+// const EventController = require('./controllers/eventController');
+const UserController = require('./controllers/userController');
 // const userRoutes = require('./routes/user');
 const cors = require('cors')
 
@@ -30,19 +30,13 @@ app.post('/signup', UserController.signup)
 
 app.post('/login', UserController.login)
 
-app.get('/events', EventController.getEvents)
+// app.get('/events', EventController.getEvents)
 
-app.post('/events/add', EventController.addEvent)
+// app.post('/events/add', EventController.addEvent)
 
-app.post('/events/update', EventController.updateEvent)
+// app.post('/events/update', EventController.updateEvent)
 
-app.delete('/events/delete/:id', EventController.deleteEvent)
-
-const getSellers = (req, res) => {
-    User.find({type: ['SELLER', 'BUYER_SELLER']})
-    .then((sellers) => res.json(sellers))
-    .catch((err) => console.log(err))
-}
+// app.delete('/events/delete/:id', EventController.deleteEvent)
 
 app.get('/users/sellers', getSellers)
 
