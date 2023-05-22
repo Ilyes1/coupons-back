@@ -1,4 +1,4 @@
-const Event = require('../models/Event')
+const Event = require('../models/eventSchema')
 
 const getEvents = (req, res) => {
       Event.find()
