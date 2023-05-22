@@ -38,7 +38,7 @@ app.post('/events/update', EventUser.updateEvent)
 
 app.delete('/events/delete/:id', EventUser.deleteEvent)
 
-app.get('/users/sellers', getSellers)
+app.get('/users/sellers', EventUser.getSellers)
 
 app.get('/users/buyers', EventUser.getBuyers)
 
