@@ -20,6 +20,10 @@ const eventSchema = new mongoose.Schema({
     code_type: {
         type: String,
         required: true
+    },
+    image_url: {
+        type: String,
+        required: true
     }
 })
 

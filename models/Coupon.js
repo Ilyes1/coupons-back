@@ -10,11 +10,11 @@ const couponSchema = new mongoose.Schema({
         required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     account: {
