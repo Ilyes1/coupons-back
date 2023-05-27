@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const EventController = require('./controllers/eventController');
 const UserController = require('./controllers/userController');
 const CouponController = require('./controllers/couponController')
+const AnswersController = require('./controllers/answersController')
 const cors = require('cors')
 
 const app = express()
@@ -30,12 +31,17 @@ app.post('/signup', UserController.signup)
 app.post('/login', UserController.login)
 
 
+app.post('/answers/add', AnswersController.addAnswers)
+app.get('/answers', AnswersController.getAnswers)
+
+
 app.get('/events', EventController.getEvents)
 app.post('/events/add', EventController.addEvent)
 app.post('/events/update', EventController.updateEvent)
 app.delete('/events/delete/:id', EventController.deleteEvent)
 
 
+app.get('/users', UserController.getUsers)
 app.get('/users/sellers', UserController.getSellers)
 app.get('/users/buyers', UserController.getBuyers)
 app.post('/users/update', UserController.updateStatus)

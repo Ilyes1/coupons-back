@@ -23,6 +23,9 @@ const signup = (req, res) => {
                         password: data,
                         type: req.body.type,
                         status: 'NA',
+                        broker_experience: req.body.broker_experience,
+                        how_did_you_hear: req.body.how_did_you_hear,
+                        refer_by: req.body.refer_by
                 })
                 user.save()
                 .then(() => console.log('saved'))
@@ -55,6 +58,12 @@ const login = (req, res) => {
 }
 
 
+const getUsers = (req, res) => {
+    User.find({})
+    .then((users) => res.json(users))
+    .catch((err) => console.log(err))
+}
+
 const getSellers = (req, res) => {
     User.find({type: ['SELLER', 'BUYER_SELLER']})
     .then((sellers) => res.json(sellers))
@@ -80,4 +89,4 @@ const deleteUser = (req, res) => {
 }
 
 
-module.exports = { getSellers, getBuyers, updateStatus, deleteUser, signup, login }
+module.exports = { getUsers, getSellers, getBuyers, updateStatus, deleteUser, signup, login }
