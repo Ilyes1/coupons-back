@@ -19,4 +19,10 @@ const getAnswers = (req, res) => {
     .catch(err => res.status(400).json(err))
 }
 
-module.exports = { addAnswers, getAnswers }
+const deleteAnswers = (req, res) => {
+    Answers.deleteOne({_id: req.params.id})
+    .then(() => res.status(200).json({message: 'Answers deleted'}))
+    .catch((err) => res.status(400).json(err))
+}
+
+module.exports = { addAnswers, getAnswers, deleteAnswers }

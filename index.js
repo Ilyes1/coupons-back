@@ -33,6 +33,7 @@ app.post('/login', UserController.login)
 
 app.post('/answers/add', AnswersController.addAnswers)
 app.get('/answers', AnswersController.getAnswers)
+app.delete('/answers/:id', AnswersController.deleteAnswers)
 
 
 app.get('/events', EventController.getEvents)
