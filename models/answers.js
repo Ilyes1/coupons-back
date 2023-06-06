@@ -20,6 +20,10 @@ const answersSchema = new mongoose.Schema({
     refer_by: {
         type: String,
         required: true,
+    },
+    status: {
+        type: String,
+        required: true,
     }
 })
 
