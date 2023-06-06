@@ -35,7 +35,7 @@ app.post('/answers/add', AnswersController.addAnswers)
 app.get('/answers', AnswersController.getAnswers)
 app.delete('/answers/:id', AnswersController.deleteAnswers)
 app.post('/answers/update', AnswersController.updateAnswer)
-app.get('/answers/sendMail', AnswersController.sendMail)
+// app.post('/answers/sendMail', AnswersController.sendMail)
 
 
 app.get('/events', EventController.getEvents)

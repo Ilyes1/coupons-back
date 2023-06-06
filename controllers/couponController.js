@@ -30,8 +30,8 @@ const addCode = (req, res) => {
 
 const deleteCode = (req, res) => {
     Coupon.deleteOne({_id: req.params.id})
-    .then(() => res.status(200).json({message: 'Code deleted'}))
-    .catch((err) => res.status(200).json({message: 'Code deleted'}))
+    .then(() => res.status(201).json({message: 'Code deleted'}))
+    .catch((err) => res.status(403).json(err))
 }
 
 

@@ -28,17 +28,9 @@ const deleteAnswers = (req, res) => {
 }
 
 const updateAnswer = (req, res) => {
-    Answers.updateOne({_id: req.body.id}, {status: req.body.status})
-    .then(() => res.status(200).json({message: 'Status updated'}))
-    .catch((err) => res.status(400).json(err))
-}
 
-
-
-// Create a transporter object using your email service provider's SMTP settings
-const sendMail = (req, res) => {
-    // const email = req.body.email
-    // const name = req.body.name
+    const email = req.body.email
+    const name = req.body.name
 
     var transporter = nodemailer.createTransport({
         service: 'hotmail',
@@ -49,21 +41,57 @@ const sendMail = (req, res) => {
     });
   
     // Define the email message
-    var mailOptions = {
+    var approveOptions = {
         from: 'ihannouch88@gmail.com',
-        to: 'ihannouch7@gmail.com',
-        subject: 'Coupons Website',
-        text: 'This is the email content.',
+        to: email,
+        subject: 'Application Approved - Welcome to Our Platform!',
+        html: `
+            <p>Dear ${name}</p>
+            <p>We are thrilled to inform you that your application to join our platform has been approved! Congratulations, and welcome aboard! We appreciate your interest and are excited to have you as a part of our community.</p>
+            <p>To complete the registration process, please click on the following link to sign up:</p>
+            <p><a href="https://coupons1.netlify.app/signup">https://coupons1.netlify.app/signup</a></p>
+            <p>Once again, congratulations on your application approval! We look forward to welcoming you to our platform.</p>
+        `,
     };
+
+    var disapproveOptions = {
+        from: 'ihannouch88@gmail.com',
+        to: email,
+        subject: 'Application Status - Update',
+        html: `
+            <p>Dear ${name}</p>
+            <p>Thank you for your interest in our platform and for submitting your application. We appreciate the time and effort you invested.</p>
+            <p>After careful review, we regret to inform you that your application was not approved at this time. We want to assure you that this decision was made after thorough consideration, taking into account various factors.</p>
+            <p>We appreciate your understanding and thank you for considering our platform. Should there be any updates or changes in the future, we will notify you accordingly.</p>
+        `,
+    };
+
+    Answers.updateOne({_id: req.body.id}, {status: req.body.status})
+    .then(() => {
+        if (req.body.status == 'Approved') {
+            transporter.sendMail(approveOptions, (error, info) => {
+                if (error) {
+                    res.status(400).json(error);
+                } else {
+                    res.status(200).json({message: 'Email sent!'});
+                }
+            });
+        } else {
+            transporter.sendMail(disapproveOptions, (error, info) => {
+                if (error) {
+                    res.status(400).json(error);
+                } else {
+                    res.status(200).json({message: 'Email sent!'});
+                }
+            });
+        }
+    })
+    .catch((err) => res.status(400).json(err))
+    
+    
     
     // Send the email
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-            console.log('Error occurred while sending email:', error);
-            } else {
-            console.log('Email sent successfully:', info.response);
-            }
-        });
-    }
+    
+}
 
-module.exports = { addAnswers, getAnswers, deleteAnswers, updateAnswer, sendMail }
+module.exports = { addAnswers, getAnswers, deleteAnswers, updateAnswer }
